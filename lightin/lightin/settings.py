@@ -12,6 +12,18 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+if 'MYSQL_USER' in os.environ:
+    MYSQL_USER = os.environ['MYSQL_USER']
+    MYSQL_PASS = os.environ['MYSQL_PASS']
+    MYSQL_HOST = os.environ['MYSQL_HOST']
+    MYSQL_PORT = os.environ['MYSQL_PORT']
+    MYSQL_NAME = os.environ['MYSQL_NAME']
+else:
+    MYSQL_USER = ''
+    MYSQL_PASS = ''
+    MYSQL_HOST = ''
+    MYSQL_PORT = '3306'
+    MYSQL_NAME = 'lightin'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
@@ -58,8 +70,13 @@ WSGI_APPLICATION = 'lightin.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE'   : 'django.db.backends.mysql',
+        'NAME'     : MYSQL_NAME,
+        'USER'     : MYSQL_USER,
+        'HOST'     : MYSQL_HOST,
+        'PORT'     : MYSQL_PORT,
+        'PASSWORD' : MYSQL_PASS,
+        
     }
 }
 
