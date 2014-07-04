@@ -21,7 +21,7 @@ if 'MYSQL_USER' in os.environ:
 else:
     MYSQL_USER = ''
     MYSQL_PASS = ''
-    MYSQL_HOST = ''
+    MYSQL_HOST = '127.0.0.1'
     MYSQL_PORT = '3306'
     MYSQL_NAME = 'lightin'
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'mobiconf',
+    'south',
 )
 
 MIDDLEWARE_CLASSES = (
