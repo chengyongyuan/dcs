@@ -1,3 +1,4 @@
+#-*- coding:utf8 -*-
 from django.db import models
 
 # Create your models here.
@@ -10,5 +11,5 @@ class ScreenConf(models.Model):
     rl    = models.FloatField()               #right lower 
 
     def __unicode__(self):
-        return "[name:%s, lu:%.2f, ll:.2fu, ru:%.2f, rl:%.2f]" \
+        return u"[机型:%s, 左上:%s, 左下:%s, 右上:%s, 右下:%s]" \
                %(self.mtype, self.lu, self.ll, self.ru, self.rl)

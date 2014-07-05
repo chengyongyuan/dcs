@@ -36,6 +36,17 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+#template config
+TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, 'templates'),
+    os.path.join(BASE_DIR, 'mobiconf/templates'),
+)    
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+)
+
 ALLOWED_HOSTS = []
 
 
@@ -84,7 +95,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-CN'
 
 TIME_ZONE = 'UTC'
 
