@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'lightin.views.home', name='home'),
+    url(r'^$', 'mobiconf.views.index', name='index'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^mobi/',  include('mobiconf.urls', namespace='mobiconf')),
     url(r'^admin/', include(admin.site.urls)),
