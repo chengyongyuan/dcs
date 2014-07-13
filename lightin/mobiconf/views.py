@@ -14,8 +14,8 @@ def getmargin(request):
         try:
             screen_conf = ScreenConf.objects.get(mtype=mname)
             json_rsp = json.dumps({'status': {'result':True, 'errmsg':''}, \
-                                  'margin': {'lu': screen_conf.lu, 'll': screen_conf.ll, \
-                                             'ru': screen_conf.ru, 'rl': screen_conf.rl}}) 
+                                  'margin': {'left': screen_conf.left, 'right': screen_conf.right, \
+                                             'top': screen_conf.top, 'bottom': screen_conf.bottom}}) 
         except (KeyError, ScreenConf.DoesNotExist):
             json_rsp = json.dumps({'status': {'result':False, 'errmsg':'machine %s not found' %(mname)}})
     else:
