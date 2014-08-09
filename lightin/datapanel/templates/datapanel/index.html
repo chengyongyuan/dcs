@@ -1,0 +1,325 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="img/favicon.ico">
+
+    <title>Dashboard Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "datapanel/css/bootstrap/bootstrap.min.css" %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static "datapanel/css/bootstrap/dashboard.css" %}" rel="stylesheet">
+
+    <script src="{% static "datapanel/js/jquery_1_8_2.min.js" %}"></script>	
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="{% static "datapanel/js/bootstrap/ie-emulation-modes-warning.js" %}"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static "datapanel/js/bootstrap//ie10-viewport-bug-workaround.js" %}"></script>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<script type="text/javascript">
+$(function () {
+    $('#container1').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 1,//null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Android Web Broswer Rank, 2014'
+        },
+        tooltip: {
+    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                ['Firefox',   45.0],
+                ['IE',       26.8],
+                {
+                    name: 'Chrome',
+                    y: 12.8,
+                    sliced: true,
+                    selected: true
+                },
+                ['Safari',    8.5],
+                ['Opera',     6.2],
+                ['Others',   0.7]
+            ]
+        }]
+    });
+
+    $('#container2').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 1,//null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Android Version Rank, 2014'
+        },
+        tooltip: {
+    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [
+                ['2.2 Froyo',   1.2],
+                ['2.3 Gingerbread',       19],
+                ['3.2 Honeycomb',    0.1],
+                ['4.0 Ice Cream Sandwich',     15.2],
+                ['4.1 Jelly Bean',   35.3],
+                ['4.2',   17.1],
+                ['4.3',   9.6],
+                ['4.4 KitKat',   2.5]
+            ]
+        }]
+    });
+    $('#container3').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 1,//null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Android Devices Screen Densensity Distribution, 2014'
+        },
+        tooltip: {
+    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: [ ['ldpi',   9.1],
+                ['mdpi',       22.2],
+                ['tvdpi',    1.5],
+                ['hdpi',     34.6],
+                ['xhdpi',    20.7],
+                ['xxhdpi',   11.9],
+            ]
+        }]
+    });
+
+	       $('#container4').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '用户省份占比TOP5.'
+            },
+            subtitle: {
+                text: 'Source: StorePic'
+            },
+            xAxis: {
+                categories: ['深圳', '上海', '广州', '北京', '浙江'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '用户数',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: '用户数',
+                data: [635, 203, 107, 31, 2]
+            }]
+        });
+
+	       $('#container5').highcharts({
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: '手机型号TOP5.'
+            },
+            subtitle: {
+                text: 'Source: StorePic'
+            },
+            xAxis: {
+                categories: ['三星S4', 'IPhone 4S', 'HTC Bufferfly', '小米3', '红米'],
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: '用户数',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: '用户数',
+				color: '#f7a35c',
+                data: [1129, 809, 456, 330, 110]
+            }]
+        });
+});
+		</script>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">LightInTec.</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">Profile</a></li>
+            <li><a href="#">Help</a></li>
+          </ul>
+          <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search...">
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="#">Overview</a></li>
+            <li><a href="#">Crash Reports</a></li>
+            <li><a href="#">Log Reports</a></li>
+            <li><a href="#">Analytics</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li><a href="">Nav item</a></li>
+            <li><a href="">Nav item again</a></li>
+            <li><a href="">One more nav</a></li>
+            <li><a href="">Another nav item</a></li>
+            <li><a href="">More navigation</a></li>
+          </ul>
+        </div>
+        <div class="col-xs-12 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">StorePic</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-12 col-sm-12 placeholder">
+			  <div id="container1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            </div>
+            <div class="col-xs-12 col-sm-12 placeholder">
+			  <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            </div>
+            <div class="col-xs-12 col-sm-12 placeholder">
+			  <div id="container3" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+            </div>
+            <div class="col-xs-12 col-sm-12 placeholder">
+			  <div id="container4" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
+            </div>
+            <div class="col-xs-12 col-sm-12 placeholder">
+			  <div id="container5" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static "datapanel/js/bootstrap/bootstrap.min.js" %}"></script>
+    <script src="{% static "datapanel/js/bootstrap/docs.min.js" %}"></script>
+
+	<!-- Highchart core JavaScript
+	================================================== -->
+	<script src="{% static "datapanel/js/highchart/highcharts.js" %}"></script>
+	<script src="{% static "datapanel/js/highchart/exporting.js" %}"></script>
+  </body>
+</html>
