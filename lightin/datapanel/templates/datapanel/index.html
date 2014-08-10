@@ -18,8 +18,9 @@
     <link href="{% static "datapanel/css/bootstrap/dashboard.css" %}" rel="stylesheet">
 
     <script src="{% static "datapanel/js/jquery_1_8_2.min.js" %}"></script>	
+
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="{% static "datapanel/js/bootstrap/ie8-responsive-file-warning.js" %}"></script><![endif]-->
     <script src="{% static "datapanel/js/bootstrap/ie-emulation-modes-warning.js" %}"></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
@@ -32,50 +33,6 @@
     <![endif]-->
 <script type="text/javascript">
 $(function () {
-    $('#container1').highcharts({
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: 1,//null,
-            plotShadow: false
-        },
-        title: {
-            text: 'Android Web Broswer Rank, 2014'
-        },
-        tooltip: {
-    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: true,
-                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                    style: {
-                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                    }
-                }
-            }
-        },
-        series: [{
-            type: 'pie',
-            name: 'Browser share',
-            data: [
-                ['Firefox',   45.0],
-                ['IE',       26.8],
-                {
-                    name: 'Chrome',
-                    y: 12.8,
-                    sliced: true,
-                    selected: true
-                },
-                ['Safari',    8.5],
-                ['Opera',     6.2],
-                ['Others',   0.7]
-            ]
-        }]
-    });
-
     $('#container2').highcharts({
         chart: {
             plotBackgroundColor: null,
@@ -238,6 +195,62 @@ $(function () {
                 data: [1129, 809, 456, 330, 110]
             }]
         });
+
+        $('#container1').highcharts({
+            chart: {
+                type: 'spline'
+            },
+            title: {
+                text: 'StormPic 日用户数'
+            },
+            xAxis: {
+                type: 'datetime',
+                dateTimeLabelFormats: { // don't display the dummy year
+                    month: '%e. %b',
+                    year: '%b'
+                },
+                title: {
+                    text: '日期'
+                }
+            },
+            yAxis: {
+                title: {
+                    text: '用户数'
+                },
+                min: 0
+            },
+            tooltip: {
+                headerFormat: '<b>{series.name}</b><br>',
+                pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
+            },
+
+            series: [{
+                name: '2014年8月',
+                // Define the data points. All series have a dummy year
+                // of 1970/71 in order to be compared on the same x axis. Note
+                // that in JavaScript, months start at 0 for January, 1 for February etc.
+                data: [
+                    [Date.UTC(2014,  7,  1), 110],
+                    [Date.UTC(2014,  7,  2), 180],
+                    [Date.UTC(2014,  7,  3), 430],
+                    [Date.UTC(2014,  7,  4), 600],
+                    [Date.UTC(2014,  7,  5), 680],
+                    [Date.UTC(2014,  7,  6), 640],
+                    [Date.UTC(2014,  7,  7), 700],
+                    [Date.UTC(2014,  7,  8), 680],
+                    [Date.UTC(2014,  7,  9), 660],
+                    [Date.UTC(2014,  7, 10), 678],
+                    [Date.UTC(2014,  7, 11), 690],
+                    [Date.UTC(2014,  7, 12), 670],
+                    [Date.UTC(2014,  7, 13), 1200],
+                    [Date.UTC(2014,  7, 14), 1800 ],
+                    [Date.UTC(2014,  7, 15), 3000],
+                    [Date.UTC(2014,  7, 16), 5000],
+                    [Date.UTC(2014,  7, 17), 10000],
+                    [Date.UTC(2014,  7, 18), 15000]
+                ]
+            }, ]
+        });
 });
 		</script>
   </head>
@@ -291,13 +304,13 @@ $(function () {
 
           <div class="row placeholders">
             <div class="col-xs-12 col-sm-12 placeholder">
-			  <div id="container1" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+			  <div id="container1" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
             </div>
             <div class="col-xs-12 col-sm-12 placeholder">
-			  <div id="container2" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+			  <div id="container2" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
             </div>
             <div class="col-xs-12 col-sm-12 placeholder">
-			  <div id="container3" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+			  <div id="container3" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
             </div>
             <div class="col-xs-12 col-sm-12 placeholder">
 			  <div id="container4" style="min-width: 310px; height: 400px; max-width: 800px; margin: 0 auto"></div>
