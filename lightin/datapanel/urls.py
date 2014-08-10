@@ -6,4 +6,5 @@ urlpatterns = patterns('',
     # url(r'^$', 'lightin.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^$',  index, name='index'),
+    url(r'login$', login, name='login'),
 )
